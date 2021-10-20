@@ -4,16 +4,11 @@ import android.content.Context
 import androidx.room.Room
 import com.example.renta.datalayer.local.CachingDB
 import com.example.renta.datalayer.local.CachingDao
-import com.example.renta.datalayer.repos.CachingRepositoryImpl
-import com.example.renta.domain.CachingRepository
+import dagger.Module
 import dagger.Provides
 
+@Module
 class CachingModule {
-
-    @Provides
-    fun provideCachingRepository(cachingDao: CachingDao): CachingRepository {
-        return CachingRepositoryImpl(cachingDao)
-    }
 
 
     @Provides
@@ -21,7 +16,7 @@ class CachingModule {
         val db = Room.databaseBuilder(
             context,
             CachingDB::class.java,
-            Companion.DB_NAME
+            DB_NAME
         )
             .build()
         return db.cachingDao()

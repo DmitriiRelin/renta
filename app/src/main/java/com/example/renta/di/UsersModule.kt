@@ -6,15 +6,19 @@ import com.example.renta.datalayer.remote.RemoteDataSource
 import com.example.renta.datalayer.repos.UsersRepositoryImpl
 import com.example.renta.domain.UsersRepository
 import com.google.gson.GsonBuilder
+import dagger.Module
 import dagger.Provides
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava3.RxJava3CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
+import javax.inject.Singleton
 
+@Module
 class UsersModule {
 
+
     @Provides
-    fun providesCinemaApi(): ApiService {
+    fun providesUsersApi(): ApiService {
         val apiService = Retrofit.Builder()
             .baseUrl("https://reqres.in/")
             .addCallAdapterFactory(RxJava3CallAdapterFactory.create())
@@ -25,6 +29,7 @@ class UsersModule {
             .create(ApiService::class.java)
         return apiService
     }
+
 
     @Provides
     fun provideUsersRepository(

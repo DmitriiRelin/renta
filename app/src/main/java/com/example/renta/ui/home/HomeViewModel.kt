@@ -1,14 +1,20 @@
 package com.example.renta.ui.home
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import com.example.renta.LoadingResult
+import com.example.renta.domain.entites.User
 import com.example.renta.domain.uc.GetUsersListUseCase
+import io.reactivex.rxjava3.core.Observable
 import javax.inject.Inject
 
-class HomeViewModel(private val getUserListUseCase: GetUsersListUseCase) : ViewModel() {
+class HomeViewModel @Inject constructor(private val getUserListUseCase: GetUsersListUseCase) :
+    ViewModel() {
 
+
+    fun getUserList(): Observable<LoadingResult<List<User>>> {
+        return getUserListUseCase.getUserList()
+    }
 
 }
 
