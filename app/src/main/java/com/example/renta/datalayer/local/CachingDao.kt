@@ -10,10 +10,10 @@ interface CachingDao {
     @Query("SELECT * FROM CachingUsers")
     fun allCachingUsers(): List<CachingUser>
 
-
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insert(cachingListUsers: List<CachingUser>)
 
     @Delete
     fun delete(cachingListUsers: List<CachingUser>)
+
 }

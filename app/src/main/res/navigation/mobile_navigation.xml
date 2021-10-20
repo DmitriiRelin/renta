@@ -9,17 +9,28 @@
         android:id="@+id/navigation_home"
         android:name="com.example.renta.ui.home.HomeFragment"
         android:label="@string/title_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_navigation_home_to_detailFragment"
+            app:destination="@id/detailFragment" />
+    </fragment>
 
     <fragment
-        android:id="@+id/navigation_dashboard"
-        android:name="com.example.renta.ui.dashboard.DashboardFragment"
-        android:label="@string/title_dashboard"
-        tools:layout="@layout/fragment_dashboard" />
-
+        android:id="@+id/navigation_info"
+        android:name="com.example.renta.ui.info.InfoFragment"
+        android:label="@string/title_info"
+        tools:layout="@layout/fragment_info" />
     <fragment
-        android:id="@+id/navigation_notifications"
-        android:name="com.example.renta.ui.notifications.NotificationsFragment"
-        android:label="@string/title_notifications"
-        tools:layout="@layout/fragment_notifications" />
+        android:id="@+id/detailFragment"
+        android:name="com.example.renta.ui.detail.DetailFragment"
+        tools:layout="@layout/fragment_detail">
+        <argument
+            android:name="user"
+            android:defaultValue="@null"
+            app:argType="com.example.renta.domain.entites.User"
+            app:nullable="true" />
+    </fragment>
+
+
+
 </navigation>

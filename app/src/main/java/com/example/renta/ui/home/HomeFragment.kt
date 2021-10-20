@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.renta.App
 import com.example.renta.LoadingResult
@@ -19,7 +20,6 @@ import javax.inject.Inject
 
 class HomeFragment : Fragment() {
 
-
     @Inject
     lateinit var viewModelFactory: HomeViewModelFactory
 
@@ -30,8 +30,9 @@ class HomeFragment : Fragment() {
 
     private var disposable1: Disposable? = null
 
-    private val adapter = HomeAdapter { movie ->
-
+    private val adapter = HomeAdapter { user ->
+        findNavController().navigate(HomeFragmentDirections.actionNavigationHomeToDetailFragment(
+            user))
     }
 
 
@@ -54,15 +55,10 @@ class HomeFragment : Fragment() {
             .subscribe { result ->
                 when (result) {
                     is LoadingResult.Success -> {
-                        binding.isFromCache.text = result.isFromCache.toString()
-                        if (result.data.isNotEmpty()) {
-                            adapter.usersList = result.data
-                            binding.emptyList.visibility = View.GONE
-                        } else
-                            binding.emptyList.visibility = View.VISIBLE
+                        adapter.usersList = result.data
                     }
-                    is LoadingResult.Loading -> {}
-
+                    is LoadingResult.Loading -> {
+                    }
                 }
             }
 
@@ -74,7 +70,7 @@ class HomeFragment : Fragment() {
     }
 
     private fun initRecyclerView() {
-        val layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+        val layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
         binding.recycler.layoutManager = layoutManager
         binding.recycler.adapter = adapter
     }

@@ -10,6 +10,7 @@ class HomeHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     private val binding: UserItemBinding = UserItemBinding.bind(itemView)
 
     fun bind(user: User) {
-        binding.title.text = user.first_name
+        binding.userName.text = user.first_name
+        binding.userLastName.text = user.last_name
     }
 }

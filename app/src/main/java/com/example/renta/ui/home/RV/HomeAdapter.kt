@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.renta.R
 import com.example.renta.domain.entites.User
 
-class HomeAdapter(val onItemClickListener: (User) -> Unit) : RecyclerView.Adapter<HomeHolder>() {
+class HomeAdapter(private val onItemClickListener: (User) -> Unit) : RecyclerView.Adapter<HomeHolder>() {
 
     var usersList = listOf<User>()
         set(value) {
