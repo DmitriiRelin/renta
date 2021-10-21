@@ -8,7 +8,6 @@ import com.example.renta.datalayer.remote.dto.UserData
 import com.example.renta.domain.UsersRepository
 import com.example.renta.domain.entites.User
 import io.reactivex.rxjava3.core.Observable
-import java.util.concurrent.TimeUnit
 import javax.inject.Inject
 
 class UsersRepositoryImpl @Inject constructor(
@@ -26,8 +25,7 @@ class UsersRepositoryImpl @Inject constructor(
             )
             emiter.onNext(LoadingResult.Loading())
             dataSource.getListUsers()
-                .delay(5, TimeUnit.SECONDS)
-                .subscribe ({ response ->
+                .subscribe({ response ->
                     dao.insert(response.data.map { userDataToCachingUser(it) })
                     emiter.onNext(
                         LoadingResult.Success(
@@ -42,7 +40,7 @@ class UsersRepositoryImpl @Inject constructor(
         }
     }
 
-    fun cachingUserToUser(cachingUser: CachingUser): User {
+    private fun cachingUserToUser(cachingUser: CachingUser): User {
         return User(
             cachingUser.id,
             cachingUser.email,
@@ -52,7 +50,7 @@ class UsersRepositoryImpl @Inject constructor(
         )
     }
 
-    fun userDataToUser(userData: UserData): User {
+    private fun userDataToUser(userData: UserData): User {
         return User(
             userData.id,
             userData.email,
@@ -62,7 +60,7 @@ class UsersRepositoryImpl @Inject constructor(
         )
     }
 
-    fun userDataToCachingUser(userData: UserData): CachingUser {
+    private fun userDataToCachingUser(userData: UserData): CachingUser {
         return CachingUser(
             userData.id,
             userData.email,

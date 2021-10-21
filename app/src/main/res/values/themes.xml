@@ -13,4 +13,74 @@
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
     </style>
+
+
+    <style name="BottomNavigationViewStyle">
+        <item name="android:layout_marginStart">@dimen/null_margin</item>
+        <item name="android:layout_marginEnd">@dimen/null_margin</item>
+        <item name="android:background">@color/primaryDarkColor</item>
+        <item name="itemIconTint">@color/secondaryLightColor</item>
+        <item name="itemTextColor">@color/secondaryLightColor</item>
+    </style>
+
+    <style name="AvatarImageViewStyle">
+        <item name="android:layout_margin">@dimen/standard_layout_margin</item>
+        <item name="android:layout_width">@dimen/layout_width_for_avatar</item>
+        <item name="android:layout_height">@dimen/layout_height_for_avatar</item>
+    </style>
+
+    <style name="DetailTextViewStyle">
+        <item name="android:layout_margin">@dimen/standard_layout_margin</item>
+        <item name="android:padding">@dimen/small_padding</item>
+        <item name="android:textColor">@color/secondaryLightColor</item>
+        <item name="android:textSize">@dimen/big_text_size</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+
+    <style name="InfoTextViewStyle">
+        <item name="android:layout_margin">@dimen/standard_layout_margin</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:textColor">@color/secondaryLightColor</item>
+        <item name="android:textSize">@dimen/big_text_size</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="UserCardViewStyle">
+        <item name="android:layout_height">@dimen/layout_height_for_cardView</item>
+        <item name="android:layout_margin">@dimen/small_layout_margin</item>
+        <item name="android:backgroundTint">@color/primaryLightColor</item>
+        <item name="cardCornerRadius">@dimen/standard_corner_radius</item>
+    </style>
+
+    <style name="UserTextViewStyle">
+        <item name="android:padding">@dimen/small_padding</item>
+        <item name="android:textColor">@color/secondaryColor</item>
+        <item name="android:textSize">@dimen/big_text_size</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="ProgressBarStyle">
+        <item name="android:layout_gravity">center</item>
+        <item name="android:indeterminateDrawable">@drawable/spinner_ring</item>
+        <item name="android:indeterminateOnly">true</item>
+    </style>
+
+    <style name="ErrorTitleTextViewStyle">
+        <item name="android:textStyle">bold</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:layout_margin">@dimen/big_layout_margin</item>
+        <item name="android:text">@string/error_title</item>
+        <item name="android:textColor">@color/secondaryLightColor</item>
+        <item name="android:textSize">@dimen/big_text_size</item>
+    </style>
+
+    <style name="ErrorDescriptionTextViewStyle">
+        <item name="android:layout_gravity">center</item>
+        <item name="android:layout_margin">@dimen/big_layout_margin</item>
+        <item name="android:text">@string/error_description</item>
+        <item name="android:textColor">@color/secondaryLightColor</item>
+        <item name="android:textSize">@dimen/big_text_size</item>
+    </style>
+
 </resources>

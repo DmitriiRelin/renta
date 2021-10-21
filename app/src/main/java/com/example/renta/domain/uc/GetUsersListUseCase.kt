@@ -9,7 +9,7 @@ import javax.inject.Inject
 
 class GetUsersListUseCase @Inject constructor(private val repository: UsersRepository) {
 
-    fun getUserList(): Observable<LoadingResult<List<User>>>{
+    fun getUserList(): Observable<LoadingResult<List<User>>> {
         return repository.getListUsers()
     }
 

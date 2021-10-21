@@ -2,7 +2,6 @@ package com.example.renta.datalayer.local
 
 import androidx.room.*
 import com.example.renta.datalayer.local.dto.CachingUser
-import io.reactivex.rxjava3.core.Observable
 
 @Dao
 interface CachingDao {

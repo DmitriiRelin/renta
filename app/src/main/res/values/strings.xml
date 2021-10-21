@@ -2,4 +2,8 @@
     <string name="app_name">renta</string>
     <string name="title_home">Home</string>
     <string name="title_info">Info</string>
+
+    <string name="error_title">List not available</string>
+    <string name="error_description">Please, check your internet connection or use the favorites tab</string>
+
 </resources>

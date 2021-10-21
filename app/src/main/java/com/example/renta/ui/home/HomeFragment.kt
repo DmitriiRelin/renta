@@ -23,7 +23,7 @@ class HomeFragment : Fragment() {
     @Inject
     lateinit var viewModelFactory: HomeViewModelFactory
 
-    val viewModel: HomeViewModel by viewModels { viewModelFactory }
+    private val viewModel: HomeViewModel by viewModels { viewModelFactory }
 
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
@@ -40,11 +40,10 @@ class HomeFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?,
-    ): View? {
+    ): View {
 
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
-        val root: View = binding.root
-        return root
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -55,9 +54,14 @@ class HomeFragment : Fragment() {
             .subscribe { result ->
                 when (result) {
                     is LoadingResult.Success -> {
+                        showList()
                         adapter.usersList = result.data
                     }
                     is LoadingResult.Loading -> {
+                        showLoading()
+                    }
+                    is LoadingResult.Error -> {
+                        showError()
                     }
                 }
             }
@@ -75,8 +79,27 @@ class HomeFragment : Fragment() {
         binding.recycler.adapter = adapter
     }
 
+    private fun showLoading() {
+        binding.progressBar.visibility = View.VISIBLE
+        binding.recycler.visibility = View.GONE
+        binding.errorLiner.visibility = View.GONE
+    }
+
+    private fun showError() {
+        binding.progressBar.visibility = View.GONE
+        binding.recycler.visibility = View.GONE
+        binding.errorLiner.visibility = View.VISIBLE
+    }
+
+    private fun showList() {
+        binding.progressBar.visibility = View.GONE
+        binding.recycler.visibility = View.VISIBLE
+        binding.errorLiner.visibility = View.GONE
+    }
+
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+        disposable1?.dispose()
     }
 }

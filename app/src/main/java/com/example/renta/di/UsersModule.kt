@@ -20,7 +20,7 @@ class UsersModule {
     @Provides
     fun providesUsersApi(): ApiService {
         val apiService = Retrofit.Builder()
-            .baseUrl("https://reqres.in/")
+            .baseUrl(BASE_URL)
             .addCallAdapterFactory(RxJava3CallAdapterFactory.create())
             .addConverterFactory(
                 GsonConverterFactory.create(GsonBuilder().setLenient().create())
@@ -37,6 +37,10 @@ class UsersModule {
         cachingDao: CachingDao,
     ): UsersRepository {
         return UsersRepositoryImpl(dataSource, cachingDao)
+    }
+
+    companion object {
+        private const val BASE_URL = "https://reqres.in/"
     }
 
 }

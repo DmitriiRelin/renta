@@ -4,7 +4,7 @@ import android.app.Application
 import com.example.renta.di.AppComponent
 import com.example.renta.di.DaggerAppComponent
 
-class App: Application() {
+class App : Application() {
 
     lateinit var appComponent: AppComponent
 

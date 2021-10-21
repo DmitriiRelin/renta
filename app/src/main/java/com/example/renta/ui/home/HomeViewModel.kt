@@ -20,7 +20,7 @@ class HomeViewModel @Inject constructor(private val getUserListUseCase: GetUsers
 
 
 @Suppress("UNCHECKED_CAST")
-class HomeViewModelFactory @Inject constructor(val getUserListUseCase: GetUsersListUseCase) :
+class HomeViewModelFactory @Inject constructor(private val getUserListUseCase: GetUsersListUseCase) :
     ViewModelProvider.Factory {
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
         return modelClass.getConstructor(GetUsersListUseCase::class.java)

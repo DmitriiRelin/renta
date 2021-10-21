@@ -8,7 +8,7 @@ import dagger.Component
 @Component(modules = [UsersModule::class, CachingModule::class])
 interface AppComponent {
     @Component.Builder
-    interface Builder{
+    interface Builder {
         @BindsInstance
         fun applicationContext(applicationContext: Context): Builder
         fun build(): AppComponent
